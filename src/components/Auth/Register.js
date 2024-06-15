@@ -7,24 +7,23 @@ import CustomDob from '../Others/CustomDob';
 import SolidButton from '../Buttons/SolidButton';
 import { useNavigation } from '@react-navigation/native';
 import GenderSelectionModal from '../Others/GenderSelectionModal';
-import axios from 'axios';
 import Loader from '../Loader/Loader';
 
 const Register = () => {
   const navigation = useNavigation();
 
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phone, setPhoneNumber] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [dob, setDob] = useState('');
+  const [dateOfBirth, setDob] = useState('');
   const [gender, setGender] = useState('');
   const [isGenderModalVisible, setGenderModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    phoneNumber: '',
+    phone: '',
     name: '',
     email: '',
-    dob: '',
+    dateOfBirth: '',
     gender: '',
   });
 
@@ -43,15 +42,15 @@ const Register = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const newErrors = {
-      phoneNumber: '',
+      phone: '',
       name: '',
       email: '',
-      dob: '',
+      dateOfBirth: '',
       gender: '',
     };
 
-    if (!phoneNumberPattern.test(phoneNumber)) {
-      newErrors.phoneNumber = 'Invalid phone number';
+    if (!phoneNumberPattern.test(phone)) {
+      newErrors.phone = 'Invalid phone number';
       valid = false;
     }
     if (name.length === 0) {
@@ -62,8 +61,8 @@ const Register = () => {
       newErrors.email = 'Invalid email address';
       valid = false;
     }
-    if (dob.length === 0) {
-      newErrors.dob = 'Date of birth is required';
+    if (dateOfBirth.length === 0) {
+      newErrors.dateOfBirth = 'Date of birth is required';
       valid = false;
     }
     if (gender.length === 0) {
@@ -75,6 +74,14 @@ const Register = () => {
     return valid;
   };
 
+  const data = {
+    phone,
+    name,
+    email,
+    dateOfBirth,
+    gender,
+  };
+
   const handleRegister = async () => {
     if (!validateForm()) {
       Alert.alert('Invalid Input', 'Please fill all fields correctly.');
@@ -82,19 +89,27 @@ const Register = () => {
     }
 
     setLoading(true);
+
     try {
-      const response = await axios.post('https://your-server.com/api/register', {
-        phoneNumber,
-        name,
-        email,
-        dob,
-        gender,
+      const response = await fetch('http://localhost:3125/api/v1/register', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-      if (response.data.success) {
-        navigation.navigate('RegisterOtp');
-      } else {
-        Alert.alert('Registration Failed', response.data.message || 'An error occurred.');
-      }
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      // Handle response based on your application logic
+      // Example:
+      // if (responseData.success) {
+      //   navigation.navigate('RegisterOtp');
+      // } else {
+      //   Alert.alert('Registration Failed', responseData.message || 'An error occurred.');
+      // }
     } catch (error) {
       console.error('Error during registration:', error);
       Alert.alert('An error occurred', 'Please try again.');
@@ -104,7 +119,7 @@ const Register = () => {
   };
 
   const allFieldsFilled = () => {
-    return phoneNumber.length > 0 && name.length > 0 && email.length > 0 && dob.length > 0 && gender.length > 0;
+    return phone.length > 0 && name.length > 0 && email.length > 0 && dateOfBirth.length > 0 && gender.length > 0;
   };
 
   return (
@@ -120,18 +135,18 @@ const Register = () => {
         </View>
       </View>
       <View style={styles.formContainer}>
-        <View style={{ marginLeft: responsiveWidth(5.5), gap: 8 ,marginTop:responsiveHeight(2)}}>
+        <View style={{ marginLeft: responsiveWidth(5.5), gap: 8, marginTop: responsiveHeight(2) }}>
           <View style={styles.inputGroup}>
             <Text style={styles.inputLabel}>Phone Number</Text>
             <CustomTextInput
               placeholder="Type your phone number"
-              value={phoneNumber}
+              value={phone}
               onChangeText={setPhoneNumber}
               keyboardType="number-pad"
               maxLength={10}
             />
-            {errors.phoneNumber !== '' && (
-              <Text style={styles.errorText}>{errors.phoneNumber}</Text>
+            {errors.phone !== '' && (
+              <Text style={styles.errorText}>{errors.phone}</Text>
             )}
           </View>
           <View style={styles.inputGroup}>
@@ -161,8 +176,8 @@ const Register = () => {
             <View style={styles.inputGroup}>
               <Text style={styles.inputLabel}>Date of Birth</Text>
               <CustomDob onDateSelected={handleDobChange} />
-              {errors.dob !== '' && (
-                <Text style={styles.errorText}>{errors.dob}</Text>
+              {errors.dateOfBirth !== '' && (
+                <Text style={styles.errorText}>{errors.dateOfBirth}</Text>
               )}
             </View>
             <View style={styles.inputGroup}>
