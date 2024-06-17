@@ -89,9 +89,10 @@ const Register = () => {
     }
 
     setLoading(true);
+    navigation.navigate('RegisterOtp')
 
     try {
-      const response = await fetch('http://localhost:3125/api/v1/register', {
+      const response = await fetch('https://auth-crem.onrender.com/api/v1/register', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -103,13 +104,12 @@ const Register = () => {
       const responseData = await response.json();
       console.log(responseData);
 
-      // Handle response based on your application logic
-      // Example:
-      // if (responseData.success) {
-      //   navigation.navigate('RegisterOtp');
-      // } else {
-      //   Alert.alert('Registration Failed', responseData.message || 'An error occurred.');
-      // }
+    
+      if (responseData.success) {
+        navigation.navigate('RegisterOtp');
+      } else {
+        Alert.alert('Registration Failed', responseData.message || 'An error occurred.');
+      }
     } catch (error) {
       console.error('Error during registration:', error);
       Alert.alert('An error occurred', 'Please try again.');

@@ -7,7 +7,8 @@ const Splash = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('SelectAuth');
+      // navigation.navigate('SelectAuth');
+      navigation.navigate('AppNavigator');
     }, 2000);
   }, []);
 

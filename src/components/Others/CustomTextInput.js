@@ -12,10 +12,11 @@ const CustomTextInput = ({
   value,
   onChangeText,
   keyboardType,
+  btnStyle
 }) => {
   return (
     <View
-      style={{
+      style={[{
         width: responsiveWidth(90),
         height: 55,
         backgroundColor: 'white',
@@ -24,7 +25,7 @@ const CustomTextInput = ({
         justifyContent: 'center',
         paddingLeft: responsiveWidth(5),
         paddingRight: responsiveWidth(5),
-      }}>
+      },btnStyle]}>
       <TextInput
         value={value}
         onChangeText={onChangeText}

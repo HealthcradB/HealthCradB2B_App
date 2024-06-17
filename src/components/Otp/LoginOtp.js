@@ -55,7 +55,7 @@ const LoginOtp = () => {
     console.log(otp);
     <Loader visible={true} />; // Show loader
     try {
-      const response = await axios.post('http://localhost:3000/api/v1/otp', {
+      const response = await axios.post('https://auth-crem.onrender.com/api/v1/verify', {
         otp,
       });
       if (response.data.success) {
