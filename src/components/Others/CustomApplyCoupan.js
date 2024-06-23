@@ -1,4 +1,4 @@
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {
   responsiveFontSize,
@@ -6,14 +6,15 @@ import {
   responsiveWidth,
 } from 'react-native-responsive-dimensions';
 
-const CustomTextInput = ({
+const CustomApplyCoupan = ({
   title,
   placeholder,
   value,
   onChangeText,
   keyboardType,
   btnStyle,
-  placeStyle
+  placeStyle,
+  onClick
 }) => {
   return (
     <View
@@ -23,10 +24,12 @@ const CustomTextInput = ({
         backgroundColor: 'white',
         borderWidth: 1,
         borderRadius: 8,
-        justifyContent: 'center',
+        justifyContent:'space-between',
         paddingLeft: responsiveWidth(5),
         paddingRight: responsiveWidth(5),
-        borderColor:'#7C7979'
+        borderColor:'#7C7979',
+        flexDirection:'row',
+        alignItems:'center'
       },btnStyle]}>
       <TextInput
         value={value}
@@ -36,8 +39,11 @@ const CustomTextInput = ({
         placeholderTextColor={'#7C7979'}
         keyboardType={keyboardType ? keyboardType : 'default'}
       />
+      <TouchableOpacity onPress={onClick()}>
+        <Text style={{fontWeight:500 , fontSize:13 , lineHeight:19.5 , color:'#13C7EB'}}>{'APPLY'}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-export default CustomTextInput;
+export default CustomApplyCoupan;

@@ -2,7 +2,7 @@ import { View, Text ,Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
-const CustomOrder = ({Style1,source,txt1,txt2,txtStyle,style2}) => {
+const CustomOrder = ({Style1,source,txt1,txt2,txtStyle,style2,onClick}) => {
   return (
     <View style={[{
         width: responsiveWidth(42),

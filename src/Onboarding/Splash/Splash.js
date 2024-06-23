@@ -1,6 +1,10 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from 'react-native-responsive-dimensions';
 
 const Splash = () => {
   const navigation = useNavigation();
@@ -13,8 +17,8 @@ const Splash = () => {
   }, []);
 
   return (
-    <View>
-      <Text>Splash</Text>
+    <View style={{top: responsiveHeight(45), left: responsiveWidth(30)}}>
+      <Image source={require('../../images/app_logo.png')} />
     </View>
   );
 };

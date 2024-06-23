@@ -53,7 +53,10 @@ const Login = () => {
             </Text>
           </View>
         </View>
+
+
       </View>
+      
       <View
         style={{
           backgroundColor: 'white',

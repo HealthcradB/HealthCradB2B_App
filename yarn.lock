@@ -1339,6 +1339,11 @@
   dependencies:
     invariant "^2.2.4"
 
+"@react-native-picker/picker@^2.7.7":
+  version "2.7.7"
+  resolved "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.7.7.tgz"
+  integrity sha512-CTHthVmx8ujlH/u5AnxLQfsheh/DoEbo+Kbx0HGTlbKVLC1eZ4Kr9jXIIUcwB7JEgOXifdZIPQCsoTc/7GQ0ag==
+
 "@react-native/assets-registry@0.74.84":
   version "0.74.84"
 
@@ -4579,6 +4584,11 @@ react-native-gesture-handler@^2.16.2, "react-native-gesture-handler@>= 1.0.0":
     invariant "^2.2.4"
     lodash "^4.17.21"
     prop-types "^15.7.2"
+
+react-native-image-picker@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-7.1.2.tgz"
+  integrity sha512-b5y5nP60RIPxlAXlptn2QwlIuZWCUDWa/YPUVjgHc0Ih60mRiOg1PSzf0IjHSLeOZShCpirpvSPGnDExIpTRUg==
 
 react-native-modal-datetime-picker@^17.1.0:
   version "17.1.0"

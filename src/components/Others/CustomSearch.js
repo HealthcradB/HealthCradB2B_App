@@ -1,18 +1,15 @@
-import {View, Text, TextInput, Image} from 'react-native';
+import { View, TextInput, Image } from 'react-native';
 import React from 'react';
-import {
-  responsiveFontSize,
-  responsiveHeight,
-  responsiveWidth,
-} from 'react-native-responsive-dimensions';
+import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
 
 const CustomSearch = ({
-  title,
   placeholder,
   value,
   onChangeText,
   keyboardType,
   btnStyle,
+  onFocus, // Add onFocus prop
+  onBlur   // Add onBlur prop
 }) => {
   return (
     <View
@@ -30,15 +27,18 @@ const CustomSearch = ({
           alignItems: 'center',
         },
         btnStyle,
-      ]}>
+      ]}
+    >
       <Image source={require('../../images/search.png')} />
       <TextInput
         value={value}
         onChangeText={onChangeText}
-        style={{fontSize: 15, color: '#7C7979', width: responsiveWidth(70)}}
+        style={{ fontSize: 15, color: '#7C7979', width: responsiveWidth(70) }}
         placeholder={placeholder}
         placeholderTextColor="#444343"
         keyboardType={keyboardType ? keyboardType : 'default'}
+        onFocus={onFocus}   // Use onFocus prop
+        onBlur={onBlur}     // Use onBlur prop
       />
     </View>
   );

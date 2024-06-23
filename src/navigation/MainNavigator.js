@@ -14,6 +14,19 @@ import Home from '../screens/Home';
 import Category from '../screens/Category';
 import Order from '../screens/Order';
 import Profile from '../screens/Profile';
+import Exclusive from '../screens/Exclusive';
+import Brand from '../screens/Brand';
+import SearchMedicine from '../screens/SearchMedicine';
+import UpdatePharmacy from '../screens/UpdatePharmacy';
+import EditProfile from '../screens/EditProfile';
+import Help from '../screens/Help';
+import Address from '../screens/Address';
+import AddNewAddress from '../screens/AddNewAddress';
+import Coupan from '../screens/Coupan';
+import OrderPlaced from '../screens/OrderPlaced';
+import Mycart from '../screens/Mycart';
+import Testing from '../screens/Testing';
+import OrderSummery from '../screens/OrderSummery';
 
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
@@ -90,6 +103,100 @@ const MainNavigator = () => {
           component={Profile}
           options={{headerShown: false}}
         />
+
+        {/* exclusive see all */}
+        <Stack.Screen
+          name="Exclusive"
+          component={Exclusive}
+          options={{headerShown: false}}
+        />
+
+        {/* brand */}
+        <Stack.Screen
+          name="Brand"
+          component={Brand}
+          options={{headerShown: false}}
+        />
+
+        {/* seach medicine */}
+
+        <Stack.Screen
+          name="SearchMedicine"
+          component={SearchMedicine}
+          options={{headerShown: false}}
+        />
+
+        {/* update pharmacy details */}
+        <Stack.Screen
+          name="UpdatePharmacy"
+          component={UpdatePharmacy}
+          options={{headerShown: false}}
+        />
+
+        {/* edit profile */}
+
+        <Stack.Screen
+          name="EditProfile"
+          component={EditProfile}
+          options={{headerShown: false}}
+        />
+
+        {/* help and support */}
+
+        <Stack.Screen
+          name="Help&Support"
+          component={Help}
+          options={{headerShown: false}}
+        />
+
+        {/* address */}
+        <Stack.Screen
+          name="Address"
+          component={Address}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="AddNewAddress"
+          component={AddNewAddress}
+          options={{headerShown: false}}
+        />
+
+        {/* coupan */}
+        <Stack.Screen
+          name="coupan"
+          component={Coupan}
+          options={{headerShown: false}}
+        />
+
+        {/* order placed */}
+        <Stack.Screen
+          name="orderPlaced"
+          component={OrderPlaced}
+          options={{headerShown: false}}
+        />
+        {/* my cart */}
+        <Stack.Screen
+          name="mycart"
+          component={Mycart}
+          options={{headerShown: false}}
+        />
+        {/* order-summery */}
+        <Stack.Screen
+          name="orderSummary"
+          component={OrderSummery}
+          options={{headerShown: false}}
+        />
+
+
+
+        {/* testing comp */}
+        <Stack.Screen
+          name="testing"
+          component={Testing}
+          options={{headerShown: false}}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
-import { View, Text, Image } from 'react-native';
-import React from 'react';
+import { View, Image } from 'react-native';
+import React, { useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Category from '../screens/Category';
@@ -9,10 +9,12 @@ import Profile from '../screens/Profile';
 const Bottom = createBottomTabNavigator();
 
 const AppNavigator = () => {
+  const [isBottomNavVisible, setBottomNavVisible] = useState(true);
+
   return (
     <Bottom.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
 
           if (route.name === 'Home') {
@@ -37,31 +39,33 @@ const AppNavigator = () => {
         },
         tabBarActiveTintColor: '#13C7EB',
         tabBarInactiveTintColor: 'gray',
-        tabBarStyle: {
-          display: 'flex'
-        }
+        tabBarStyle: { display: isBottomNavVisible ? 'flex' : 'none' }
       })}
     >
       <Bottom.Screen
         name="Home"
-        component={Home}
         options={{ headerShown: false }}
-      />
+      >
+        {() => <Home setBottomNavVisible={setBottomNavVisible} />}
+      </Bottom.Screen>
       <Bottom.Screen
         name="Category"
-        component={Category}
         options={{ headerShown: false }}
-      />
+      >
+        {() => <Category setBottomNavVisible={setBottomNavVisible} />}
+      </Bottom.Screen>
       <Bottom.Screen
         name="Order"
-        component={Order}
         options={{ headerShown: false }}
-      />
+      >
+        {() => <Order setBottomNavVisible={setBottomNavVisible} />}
+      </Bottom.Screen>
       <Bottom.Screen
         name="Profile"
-        component={Profile}
         options={{ headerShown: false }}
-      />
+      >
+        {() => <Profile setBottomNavVisible={setBottomNavVisible} />}
+      </Bottom.Screen>
     </Bottom.Navigator>
   );
 };
