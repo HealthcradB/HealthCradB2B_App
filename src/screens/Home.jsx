@@ -5,6 +5,7 @@ import CustomSearch from '../components/Others/CustomSearch';
 import CustomOrder from '../components/Others/CustomOrder';
 import { useNavigation } from '@react-navigation/native';
 
+
 const { width: viewportWidth } = Dimensions.get('window');
 
 const images = [
@@ -194,6 +195,10 @@ const Home = ({ setBottomNavVisible }) => {
                 <Text style={{ fontWeight: 500, fontSize: 20, lineHeight: 30, color: '#13C7EB' }}>{'See All >'}</Text>
               </TouchableOpacity>
             </View>
+
+           
+            
+          
 
             {/* Exclusive */}
             <View>

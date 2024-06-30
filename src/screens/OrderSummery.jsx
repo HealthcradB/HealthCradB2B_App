@@ -1,11 +1,13 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import Back from '../components/GoBack/Back'
 import { useNavigation } from '@react-navigation/native'
 
 const OrderSummery = () => {
     const navigation = useNavigation()
+
+    const [selectedMode, setSelectedMode] = useState('full');
 
     const handelCoupan = () => {
         navigation.navigate('coupan')
@@ -14,9 +16,9 @@ const OrderSummery = () => {
 
 
     return (
-        <ScrollView>
+        <ScrollView >
 
-            <View style={{ width: responsiveWidth(100), height: responsiveHeight(100) }}>
+           
                 <View style={{ width: responsiveWidth(100), height: 71, backgroundColor: '#13C7EB', justifyContent: 'center' }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: responsiveWidth(4) }}>
                         <Back />
@@ -177,20 +179,140 @@ const OrderSummery = () => {
 
                         {/* select payment */}
 
-                        <View>
+                        <View style={{ marginTop: responsiveHeight(1) }}>
 
-                            
+                            <TouchableOpacity
+                                onPress={() => setSelectedMode('full')}
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: 15,
+                                    borderWidth: 1,
+                                    borderColor: selectedMode === 'full' ? '#13C7EB' : '#D9D9D9',
+                                    borderRadius: 5,
+                                    marginBottom: 10,
+                                }}
+                            >
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <View
+                                        style={{
+                                            height: 20,
+                                            width: 20,
+                                            borderRadius: 10,
+                                            borderWidth: 1,
+                                            borderColor: '#13C7EB',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            marginRight: 10,
+                                        }}
+                                    >
+                                        {selectedMode === 'full' && <View style={{ height: 10, width: 10, borderRadius: 5, backgroundColor: '#13C7EB' }} />}
+                                    </View>
+                                    <Text style={{ fontSize: 14, fontWeight: '500', lineHeight: 21, color: '#4A4141' }}>Full Payment</Text>
+                                </View>
+                                <Text style={{ color: '#097EEB', fontWeight: 400, fontSize: 13, lineHeight: 19.5 }}>(full online pay)</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={() => setSelectedMode('half')}
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: 15,
+                                    borderWidth: 1,
+                                    borderColor: selectedMode === 'half' ? '#13C7EB' : '#D9D9D9',
+                                    borderRadius: 5,
+                                }}
+                            >
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <View
+                                        style={{
+                                            height: 20,
+                                            width: 20,
+                                            borderRadius: 10,
+                                            borderWidth: 1,
+                                            borderColor: '#13C7EB',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            marginRight: 10,
+                                        }}
+                                    >
+                                        {selectedMode === 'half' && <View style={{ height: 10, width: 10, borderRadius: 5, backgroundColor: '#13C7EB' }} />}
+                                    </View>
+                                    <Text style={{ fontSize: 14, fontWeight: '500', lineHeight: 21, color: '#4A4141' }}>50% Pay On Delivery</Text>
+                                </View>
+                                <Text style={{ color: '#097EEB', fontWeight: 400, fontSize: 13, lineHeight: 19.5 }}>(50% online pay)</Text>
+                            </TouchableOpacity>
+
+
                         </View>
 
 
+                        {/* cancellation */}
 
+                        <View style={{ width: responsiveWidth(100), height: 72, backgroundColor: 'white', marginTop: responsiveHeight(2), justifyContent: 'center' }}>
+
+                            <View style={{ flexDirection: 'row', gap: 10 }}>
+                                <Image source={require('../images/btn.png')} />
+                                <View>
+                                    <Text style={{ fontWeight: 600, fontSize: 11, lineHeight: 16.5, color: 'black' }}>{'Cancellation is allowed up to 24 hours after placing the order.'}</Text>
+                                    <TouchableOpacity>
+                                        <Text style={{ fontWeight: 600, fontSize: 11, lineHeight: 16.5, color: '#097EEB' }}>{'Know more'}</Text>
+                                    </TouchableOpacity>
+                                </View>
+
+                            </View>
+
+
+
+                        </View>
+                    </View>
+
+                    {/* proceed to pay */}
+
+                    <View style={{marginTop:responsiveHeight(90)}}>
+                        <View
+                            style={{
+                                width: responsiveWidth(100),
+                                height: 60,
+                                backgroundColor: 'white',
+                                borderWidth: 1,
+                                borderColor: '#D9D9D9',
+                                marginTop: 2,
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                padding: 12,
+                                flexDirection: 'row',
+                            }}>
+                            <Text style={{ fontWeight: 500, fontSize: 18, color: 'black' }}>
+                                {'Rs 2000'}
+                            </Text>
+                            <TouchableOpacity onPress={() => { }}
+                                style={{
+                                    width: 150,
+                                    height: 40,
+                                    borderRadius: 5,
+                                    backgroundColor: '#097EEB',
+                                    flexDirection: 'row',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    gap: 12,
+                                }}>
+                                <Text style={{ fontWeight: 500, fontSize: 16, color: 'white' }}>
+                                    Proceed
+                                </Text>
+                                <Image source={require('../images/arrow.png')} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
 
                 </View>
 
 
-            </View>
+          
 
 
         </ScrollView>

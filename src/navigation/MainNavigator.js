@@ -28,6 +28,7 @@ import Mycart from '../screens/Mycart';
 import Testing from '../screens/Testing';
 import OrderSummery from '../screens/OrderSummery';
 
+
 const Stack = createNativeStackNavigator();
 const MainNavigator = () => {
   return (
@@ -187,8 +188,6 @@ const MainNavigator = () => {
           options={{headerShown: false}}
         />
 
-
-
         {/* testing comp */}
         <Stack.Screen
           name="testing"
@@ -196,7 +195,7 @@ const MainNavigator = () => {
           options={{headerShown: false}}
         />
 
-
+      
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,10 +1,19 @@
 
 import React from 'react'
-import MainNavigator from './navigation/MainNavigator'
+import MainNavigator from './navigation/MainNavigator.js'
+import { UseDispatch,Provider} from "react-redux"
+import { myStore } from './redux/mystore.js'
 
 const App = () => {
   return (
-   <MainNavigator/>
+   <Provider store={myStore}>
+     <MainNavigator/>
+
+   </Provider>
+     
+
+    
+   
   )
 }
 
